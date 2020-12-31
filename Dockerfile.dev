@@ -1,0 +1,14 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+ENV CHOKIDAR_USEPOLLING=true
+
+#VOLUME /app/node_modules
+
+COPY package.json .
+RUN npm install --silent
+
+COPY . .
+
+CMD ["npm", "run", "start"]
